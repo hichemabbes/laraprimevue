@@ -8,7 +8,7 @@
   --surface-e: #ffffff;
   --surface-f: #ffffff;
   --text-color: #333333;
-  --text-color-secondary: #848484;
+  --text-color-secondary: #222222;
   --primary-color: #41b883;
   --primary-color-text: #ffffff;
   --surface-0: #ffffff;
@@ -37,8 +37,8 @@
   --border-radius:3px;
   --surface-ground:#f4f4f4;
   --surface-section:#ffffff;
-  --surface-card:#ffffff;
-  --surface-overlay:#ffffff;
+  --surface-card: #9b82a3;
+  --surface-overlay: #600380;
   --surface-border:#c8c8c8;
   --surface-hover:#eaeaea;
   --focus-ring: 0 0 0 0.2rem #c2e9d8;

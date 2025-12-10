@@ -39,7 +39,7 @@
   --surface-section:#191919;
   --surface-card:#323232;
   --surface-overlay:#323232;
-  --surface-border:#4b4b4b;
+  --surface-border: rgb(255, 255, 255);
   --surface-hover:#4c4c4c;
   --focus-ring: 0 0 0 0.1rem white;
   --maskbg: rgba(0, 0, 0, 0.4);

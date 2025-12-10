@@ -8,7 +8,7 @@
   --surface-e: #ffffff;
   --surface-f: #ffffff;
   --text-color: #333333;
-  --text-color-secondary: #848484;
+  --text-color-secondary: #222222;
   --primary-color: #007ad9;
   --primary-color-text: #ffffff;
   --surface-0: #ffffff;
@@ -37,10 +37,10 @@
   --border-radius:3px;
   --surface-ground:#f4f4f4;
   --surface-section:#ffffff;
-  --surface-card:#ffffff;
-  --surface-overlay:#ffffff;
+  --surface-card: #600380;
+  --surface-overlay: #610385;
   --surface-border:#c8c8c8;
-  --surface-hover:#eaeaea;
+  --surface-hover: #8f2121;
   --focus-ring: 0 0 0 0.2rem #8dcdff;
   --maskbg: rgba(0, 0, 0, 0.4);
   --highlight-bg: #007ad9;

@@ -1,15 +1,12 @@
 <template>
     <app-layout>
-      <Chart />
+        <Chart />
     </app-layout>
 </template>
 
 <script setup>
-
-import AppLayout from "@/primevue/layout/AppLayout.vue";
-import Chart from "@/primevue/views/uikit/Chart.vue";
+import AppLayout from '@/primevue/layout/AppLayout.vue';
+import Chart from '@/primevue/views/uikit/Chart.vue';
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

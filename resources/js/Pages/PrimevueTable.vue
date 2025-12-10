@@ -1,15 +1,12 @@
 <template>
     <app-layout>
-      <Table />
+        <Table />
     </app-layout>
 </template>
 
 <script setup>
-
-import AppLayout from "@/primevue/layout/AppLayout.vue";
-import Table from "@/primevue/views/uikit/Table.vue";
+import AppLayout from '@/primevue/layout/AppLayout.vue';
+import Table from '@/primevue/views/uikit/Table.vue';
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

@@ -6,7 +6,9 @@ import Chart from 'primevue/chart';
 const { layoutConfig } = useLayout();
 let documentStyle = getComputedStyle(document.documentElement);
 let textColor = documentStyle.getPropertyValue('--text-color');
-let textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+let textColorSecondary = documentStyle.getPropertyValue(
+    '--text-color-secondary'
+);
 let surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
 const lineData = ref(null);
@@ -24,59 +26,71 @@ const radarOptions = ref(null);
 const setColorOptions = () => {
     documentStyle = getComputedStyle(document.documentElement);
     textColor = documentStyle.getPropertyValue('--text-color');
-    textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    textColorSecondary = documentStyle.getPropertyValue(
+        '--text-color-secondary'
+    );
     surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 };
 
 const setChart = () => {
     barData.value = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+        ],
         datasets: [
             {
                 label: 'My First dataset',
-                backgroundColor: documentStyle.getPropertyValue('--primary-500'),
+                backgroundColor:
+                    documentStyle.getPropertyValue('--primary-500'),
                 borderColor: documentStyle.getPropertyValue('--primary-500'),
-                data: [65, 59, 80, 81, 56, 55, 40]
+                data: [65, 59, 80, 81, 56, 55, 40],
             },
             {
                 label: 'My Second dataset',
-                backgroundColor: documentStyle.getPropertyValue('--primary-200'),
+                backgroundColor:
+                    documentStyle.getPropertyValue('--primary-200'),
                 borderColor: documentStyle.getPropertyValue('--primary-200'),
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
+                data: [28, 48, 40, 19, 86, 27, 90],
+            },
+        ],
     };
     barOptions.value = {
         plugins: {
             legend: {
                 labels: {
-                    fontColor: textColor
-                }
-            }
+                    fontColor: textColor,
+                },
+            },
         },
         scales: {
             x: {
                 ticks: {
                     color: textColorSecondary,
                     font: {
-                        weight: 500
-                    }
+                        weight: 500,
+                    },
                 },
                 grid: {
                     display: false,
-                    drawBorder: false
-                }
+                    drawBorder: false,
+                },
             },
             y: {
                 ticks: {
-                    color: textColorSecondary
+                    color: textColorSecondary,
                 },
                 grid: {
                     color: surfaceBorder,
-                    drawBorder: false
-                }
-            }
-        }
+                    drawBorder: false,
+                },
+            },
+        },
     };
 
     pieData.value = {
@@ -84,10 +98,18 @@ const setChart = () => {
         datasets: [
             {
                 data: [540, 325, 702],
-                backgroundColor: [documentStyle.getPropertyValue('--indigo-500'), documentStyle.getPropertyValue('--purple-500'), documentStyle.getPropertyValue('--teal-500')],
-                hoverBackgroundColor: [documentStyle.getPropertyValue('--indigo-400'), documentStyle.getPropertyValue('--purple-400'), documentStyle.getPropertyValue('--teal-400')]
-            }
-        ]
+                backgroundColor: [
+                    documentStyle.getPropertyValue('--indigo-500'),
+                    documentStyle.getPropertyValue('--purple-500'),
+                    documentStyle.getPropertyValue('--teal-500'),
+                ],
+                hoverBackgroundColor: [
+                    documentStyle.getPropertyValue('--indigo-400'),
+                    documentStyle.getPropertyValue('--purple-400'),
+                    documentStyle.getPropertyValue('--teal-400'),
+                ],
+            },
+        ],
     };
 
     pieOptions.value = {
@@ -95,131 +117,160 @@ const setChart = () => {
             legend: {
                 labels: {
                     usePointStyle: true,
-                    color: textColor
-                }
-            }
-        }
+                    color: textColor,
+                },
+            },
+        },
     };
 
     lineData.value = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+        ],
         datasets: [
             {
                 label: 'First Dataset',
                 data: [65, 59, 80, 81, 56, 55, 40],
                 fill: false,
-                backgroundColor: documentStyle.getPropertyValue('--primary-500'),
+                backgroundColor:
+                    documentStyle.getPropertyValue('--primary-500'),
                 borderColor: documentStyle.getPropertyValue('--primary-500'),
-                tension: 0.4
+                tension: 0.4,
             },
             {
                 label: 'Second Dataset',
                 data: [28, 48, 40, 19, 86, 27, 90],
                 fill: false,
-                backgroundColor: documentStyle.getPropertyValue('--primary-200'),
+                backgroundColor:
+                    documentStyle.getPropertyValue('--primary-200'),
                 borderColor: documentStyle.getPropertyValue('--primary-200'),
-                tension: 0.4
-            }
-        ]
+                tension: 0.4,
+            },
+        ],
     };
 
     lineOptions.value = {
         plugins: {
             legend: {
                 labels: {
-                    fontColor: textColor
-                }
-            }
+                    fontColor: textColor,
+                },
+            },
         },
         scales: {
             x: {
                 ticks: {
-                    color: textColorSecondary
+                    color: textColorSecondary,
                 },
                 grid: {
                     color: surfaceBorder,
-                    drawBorder: false
-                }
+                    drawBorder: false,
+                },
             },
             y: {
                 ticks: {
-                    color: textColorSecondary
+                    color: textColorSecondary,
                 },
                 grid: {
                     color: surfaceBorder,
-                    drawBorder: false
-                }
-            }
-        }
+                    drawBorder: false,
+                },
+            },
+        },
     };
 
     polarData.value = {
         datasets: [
             {
                 data: [11, 16, 7, 3],
-                backgroundColor: [documentStyle.getPropertyValue('--indigo-500'), documentStyle.getPropertyValue('--purple-500'), documentStyle.getPropertyValue('--teal-500'), documentStyle.getPropertyValue('--orange-500')],
-                label: 'My dataset'
-            }
+                backgroundColor: [
+                    documentStyle.getPropertyValue('--indigo-500'),
+                    documentStyle.getPropertyValue('--purple-500'),
+                    documentStyle.getPropertyValue('--teal-500'),
+                    documentStyle.getPropertyValue('--orange-500'),
+                ],
+                label: 'My dataset',
+            },
         ],
-        labels: ['Indigo', 'Purple', 'Teal', 'Orange']
+        labels: ['Indigo', 'Purple', 'Teal', 'Orange'],
     };
 
     polarOptions.value = {
         plugins: {
             legend: {
                 labels: {
-                    color: textColor
-                }
-            }
+                    color: textColor,
+                },
+            },
         },
         scales: {
             r: {
                 grid: {
-                    color: surfaceBorder
-                }
-            }
-        }
+                    color: surfaceBorder,
+                },
+            },
+        },
     };
 
     radarData.value = {
-        labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+        labels: [
+            'Eating',
+            'Drinking',
+            'Sleeping',
+            'Designing',
+            'Coding',
+            'Cycling',
+            'Running',
+        ],
         datasets: [
             {
                 label: 'My First dataset',
                 borderColor: documentStyle.getPropertyValue('--indigo-400'),
-                pointBackgroundColor: documentStyle.getPropertyValue('--indigo-400'),
-                pointBorderColor: documentStyle.getPropertyValue('--indigo-400'),
+                pointBackgroundColor:
+                    documentStyle.getPropertyValue('--indigo-400'),
+                pointBorderColor:
+                    documentStyle.getPropertyValue('--indigo-400'),
                 pointHoverBackgroundColor: textColor,
-                pointHoverBorderColor: documentStyle.getPropertyValue('--indigo-400'),
-                data: [65, 59, 90, 81, 56, 55, 40]
+                pointHoverBorderColor:
+                    documentStyle.getPropertyValue('--indigo-400'),
+                data: [65, 59, 90, 81, 56, 55, 40],
             },
             {
                 label: 'My Second dataset',
                 borderColor: documentStyle.getPropertyValue('--purple-400'),
-                pointBackgroundColor: documentStyle.getPropertyValue('--purple-400'),
-                pointBorderColor: documentStyle.getPropertyValue('--purple-400'),
+                pointBackgroundColor:
+                    documentStyle.getPropertyValue('--purple-400'),
+                pointBorderColor:
+                    documentStyle.getPropertyValue('--purple-400'),
                 pointHoverBackgroundColor: textColor,
-                pointHoverBorderColor: documentStyle.getPropertyValue('--purple-400'),
-                data: [28, 48, 40, 19, 96, 27, 100]
-            }
-        ]
+                pointHoverBorderColor:
+                    documentStyle.getPropertyValue('--purple-400'),
+                data: [28, 48, 40, 19, 96, 27, 100],
+            },
+        ],
     };
 
     radarOptions.value = {
         plugins: {
             legend: {
                 labels: {
-                    fontColor: textColor
-                }
-            }
+                    fontColor: textColor,
+                },
+            },
         },
         scales: {
             r: {
                 grid: {
-                    color: textColorSecondary
-                }
-            }
-        }
+                    color: textColorSecondary,
+                },
+            },
+        },
     };
 };
 
@@ -238,7 +289,11 @@ watch(
         <div class="col-12 xl:col-6">
             <div class="card">
                 <h5>Linear Chart</h5>
-                <Chart type="line" :data="lineData" :options="lineOptions"></Chart>
+                <Chart
+                    type="line"
+                    :data="lineData"
+                    :options="lineOptions"
+                ></Chart>
             </div>
         </div>
         <div class="col-12 xl:col-6">
@@ -256,19 +311,31 @@ watch(
         <div class="col-12 xl:col-6">
             <div class="card flex flex-column align-items-center">
                 <h5 class="text-left w-full">Doughnut Chart</h5>
-                <Chart type="doughnut" :data="pieData" :options="pieOptions"></Chart>
+                <Chart
+                    type="doughnut"
+                    :data="pieData"
+                    :options="pieOptions"
+                ></Chart>
             </div>
         </div>
         <div class="col-12 xl:col-6">
             <div class="card flex flex-column align-items-center">
                 <h5 class="text-left w-full">Polar Area Chart</h5>
-                <Chart type="polarArea" :data="polarData" :options="polarOptions"></Chart>
+                <Chart
+                    type="polarArea"
+                    :data="polarData"
+                    :options="polarOptions"
+                ></Chart>
             </div>
         </div>
         <div class="col-12 xl:col-6">
             <div class="card flex flex-column align-items-center">
                 <h5 class="text-left w-full">Radar Chart</h5>
-                <Chart type="radar" :data="radarData" :options="radarOptions"></Chart>
+                <Chart
+                    type="radar"
+                    :data="radarData"
+                    :options="radarOptions"
+                ></Chart>
             </div>
         </div>
     </div>

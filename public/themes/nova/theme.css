@@ -8,8 +8,8 @@
   --surface-e: #ffffff;
   --surface-f: #ffffff;
   --text-color: #333333;
-  --text-color-secondary: #848484;
-  --primary-color: #007ad9;
+  --text-color-secondary: #222222;
+  --primary-color: rgba(0, 0, 0, 0.12);
   --primary-color-text: #ffffff;
   --surface-0: #ffffff;
   --surface-50: #eef1f2;
@@ -37,9 +37,9 @@
   --border-radius:3px;
   --surface-ground:#f4f4f4;
   --surface-section:#ffffff;
-  --surface-card:#ffffff;
-  --surface-overlay:#ffffff;
-  --surface-border:#c8c8c8;
+  --surface-card: #600380;
+  --surface-overlay: #610385;
+  --surface-border: rgba(68, 131, 194, 0.16);
   --surface-hover:#eaeaea;
   --focus-ring: 0 0 0 0.2rem #8dcdff;
   --maskbg: rgba(0, 0, 0, 0.4);

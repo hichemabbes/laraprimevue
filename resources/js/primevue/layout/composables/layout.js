@@ -7,7 +7,7 @@ const layoutConfig = reactive({
     menuMode: 'static',
     theme: 'lara-light-indigo',
     scale: 14,
-    activeMenuItem: null
+    activeMenuItem: null,
 });
 
 const layoutState = reactive({
@@ -16,7 +16,7 @@ const layoutState = reactive({
     profileSidebarVisible: false,
     configSidebarVisible: false,
     staticMenuMobileActive: false,
-    menuHoverActive: false
+    menuHoverActive: false,
 });
 
 export function useLayout() {
@@ -39,15 +39,29 @@ export function useLayout() {
         }
 
         if (window.innerWidth > 991) {
-            layoutState.staticMenuDesktopInactive = !layoutState.staticMenuDesktopInactive;
+            layoutState.staticMenuDesktopInactive =
+                !layoutState.staticMenuDesktopInactive;
         } else {
-            layoutState.staticMenuMobileActive = !layoutState.staticMenuMobileActive;
+            layoutState.staticMenuMobileActive =
+                !layoutState.staticMenuMobileActive;
         }
     };
 
-    const isSidebarActive = computed(() => layoutState.overlayMenuActive || layoutState.staticMenuMobileActive);
+    const isSidebarActive = computed(
+        () =>
+            layoutState.overlayMenuActive || layoutState.staticMenuMobileActive
+    );
 
     const isDarkTheme = computed(() => layoutConfig.darkTheme);
 
-    return { layoutConfig: toRefs(layoutConfig), layoutState: toRefs(layoutState), changeThemeSettings, setScale, onMenuToggle, isSidebarActive, isDarkTheme, setActiveMenuItem };
+    return {
+        layoutConfig: toRefs(layoutConfig),
+        layoutState: toRefs(layoutState),
+        changeThemeSettings,
+        setScale,
+        onMenuToggle,
+        isSidebarActive,
+        isDarkTheme,
+        setActiveMenuItem,
+    };
 }

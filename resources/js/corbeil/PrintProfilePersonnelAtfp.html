@@ -1,0 +1,287 @@
+<template>
+    <div class="print-container">
+        <!-- Header -->
+        <div class="print-header">
+            <h1>Profil Utilisateur ATFP</h1>
+            <p class="date">Généré le <span>{{ currentDate }}</span></p>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="print-section">
+            <h2 class="section-title">Informations Personnelles</h2>
+            <div class="user-info-header">
+                <img :src="user.photo || '/default-avatar.png'" alt="Photo de profil" class="user-avatar">
+                <div class="user-info-text">
+                    <h2>{{ user.nom_fr || 'Non défini' }} {{ user.prenom_fr || '' }}</h2>
+                    <p>Utilisateur depuis : {{ formatDate(user.created_at) }}</p>
+                    <span :class="['status', user.statut === 'Actif' ? 'badge-success' : 'badge-danger']">
+                        {{ user.statut || 'Inactif' }}
+                    </span>
+                </div>
+            </div>
+            <!-- French Personal Data -->
+            <div class="data-section">
+                <div class="data-item">Nom : {{ user.nom_fr || 'Non défini' }}</div>
+                <div class="data-item">Prénom : {{ user.prenom_fr || 'Non défini' }}</div>
+                <div class="data-item">Genre : {{ user.genre_fr || 'Non défini' }}</div>
+                <div class="data-item">Nationalité : {{ user.nationalite_fr || 'Tunisienne' }}</div>
+                <div class="data-item">Date de Naissance : {{ formatDate(user.date_naissance) || 'Non défini' }}</div>
+                <div class="data-item">CIN : {{ user.cin || 'Non défini' }}</div>
+                <div class="data-item">Date CIN : {{ formatDate(user.date_cin) || 'Non défini' }}</div>
+                <div class="data-item">Lieu CIN : {{ user.lieu_cin_fr || 'Non défini' }}</div>
+                <div class="data-item">Lieu de Naissance : {{ user.lieu_naissance_fr || 'Non défini' }}</div>
+            </div>
+            <!-- Arabic Personal Data -->
+            <div class="data-section arabic-data">
+                <div class="data-item arabic-text">الاسم : {{ user.nom_ar || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">اللقب : {{ user.prenom_ar || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">الجنس : {{ user.genre_ar || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">الجنسية : {{ user.nationalite_ar || 'تونسية' }}</div>
+                <div class="data-item arabic-text">مكان الإصدار : {{ user.lieu_cin_ar || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">مكان الولادة : {{ user.lieu_naissance_ar || 'غير محدد' }}</div>
+            </div>
+        </div>
+
+        <!-- Professional Information -->
+        <div class="print-section">
+            <h2 class="section-title">Informations Professionnelles</h2>
+            <!-- French Professional Data -->
+            <div class="data-section">
+                <div class="data-item">Matricule : {{ user.matricule || 'Non défini' }}</div>
+                <div class="data-item">Rôles : {{ formatRoles(user.roles) }}</div>
+                <div class="data-item">Date Recrutement : {{ formatDate(user.date_recrutement) || 'Non défini' }}</div>
+                <div class="data-item">Date Fin Service : {{ formatDate(user.date_fin_service) || 'Non défini' }}</div>
+                <div class="data-item">Statut : {{ user.statut || 'Inactif' }}</div>
+                <div class="data-item">Cause Inactivité : {{ user.cause_inactivite_fr || 'Non défini' }}</div>
+                <div class="data-item">Qualité : {{ user.qualite_fr || 'Non défini' }}</div>
+                <div class="data-item">Établissement d'Origine : {{ user.etablissement_origine_fr || 'Non défini' }}</div>
+                <div class="data-item">Mission : {{ user.mission_fr || 'Non défini' }}</div>
+            </div>
+            <!-- Arabic Professional Data -->
+            <div class="data-section arabic-data">
+                <div class="data-item arabic-text">سبب عدم النشاط : {{ user.cause_inactivite_ar || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">الصفة : {{ user.qualite_ar || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">المؤسسة الأصلية : {{ user.etablissement_origine_ar || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">المهمة : {{ user.mission_ar || 'غير محدد' }}</div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="print-section">
+            <h2 class="section-title">Informations de Contact</h2>
+            <div class="data-section">
+                <div class="data-item">Email : {{ user.email || 'Non défini' }}</div>
+                <div class="data-item">Téléphone : {{ user.telephone || 'Non défini' }}</div>
+                <div class="data-item">Adresse : {{ user.adresse || 'Non défini' }}</div>
+            </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="print-section">
+            <h2 class="section-title arabic-text">معلومات إضافية</h2>
+            <!-- French Additional Data -->
+            <div class="data-section">
+                <div class="data-item">Observation : {{ user.observation_fr || 'Non défini' }}</div>
+                <div class="data-item">Email Vérifié : {{ user.email_verified_at ? formatDate(user.email_verified_at) : 'Non vérifié' }}</div>
+                <div class="data-item">Ajouté Par : {{ user.ajouter_par || 'Non défini' }}</div>
+                <div class="data-item">Créé le : {{ formatDate(user.created_at) || 'Non défini' }}</div>
+                <div class="data-item">Mis à jour le : {{ formatDate(user.updated_at) || 'Non défini' }}</div>
+                <div class="data-item">Supprimé le : {{ formatDate(user.deleted_at) || 'Non supprimé' }}</div>
+            </div>
+            <!-- Arabic Additional Data -->
+            <div class="data-section arabic-data">
+                <div class="data-item arabic-text">ملاحظات : {{ user.observation_ar || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">البريد الإلكتروني تم التحقق منه : {{ user.email_verified_at ? formatDate(user.email_verified_at) : 'غير متحقق' }}</div>
+                <div class="data-item arabic-text">أضيف بواسطة : {{ user.ajouter_par || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">تاريخ الإنشاء : {{ formatDate(user.created_at) || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">تاريخ التحديث : {{ formatDate(user.updated_at) || 'غير محدد' }}</div>
+                <div class="data-item arabic-text">تاريخ الحذف : {{ formatDate(user.deleted_at) || 'لم يتم الحذف' }}</div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: {
+            user: {
+                type: Object,
+                required: true,
+            },
+        },
+        computed: {
+            currentDate() {
+                return new Date().toLocaleDateString('fr-FR', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                });
+            },
+        },
+        methods: {
+            formatDate(date) {
+                if (!date) return 'Non défini';
+                return new Date(date).toLocaleDateString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                });
+            },
+            formatRoles(roles) {
+                return roles && Array.isArray(roles) && roles.length > 0
+                    ? roles.map(r => r.name || 'N/A').join(', ')
+                    : 'Aucun rôle';
+            },
+        },
+    };
+</script>
+
+<style>
+    @font-face {
+        font-family: 'Montserrat-Arabic-Regular';
+        src: url('/fonts/Montserrat-Arabic-Regular.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    :root {
+        --primary-color: #4361ee;
+        --light-gray: #f8f9fa;
+        --dark-gray: #343a40;
+        --border-color: #dee2e6;
+        --success-color: #4bb543;
+        --danger-color: #ff3333;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 10mm;
+        color: #333;
+        line-height: 1.6;
+        background-color: #fff;
+    }
+
+    .print-container {
+        max-width: 210mm;
+        margin: 0 auto;
+        background: white;
+        padding: 0;
+    }
+
+    .print-header {
+        text-align: center;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .print-header h1 {
+        margin: 0;
+        font-size: 2rem;
+        color: var(--dark-gray);
+    }
+
+    .print-header .date {
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin: 5px 0;
+    }
+
+    .print-section {
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--primary-color);
+    }
+
+    .section-title.arabic-text {
+        font-family: 'Montserrat-Arabic-Regular', sans-serif;
+    }
+
+    .user-info-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .user-avatar {
+        width: 80mm;
+        height: 80mm;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--primary-color);
+    }
+
+    .user-info-text h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        color: var(--dark-gray);
+    }
+
+    .user-info-text .status {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-top: 5px;
+    }
+
+    .badge-success {
+        background-color: #e6f7e6;
+        color: var(--success-color);
+    }
+
+    .badge-danger {
+        background-color: #ffe6e6;
+        color: var(--danger-color);
+    }
+
+    .data-section {
+        margin-bottom: 15px;
+        font-size: 1rem;
+    }
+
+    .data-item {
+        padding: 5px 0;
+    }
+
+    .arabic-data {
+        direction: rtl;
+    }
+
+    .arabic-text {
+        font-family: 'Montserrat-Arabic-Regular', sans-serif;
+        text-align: right;
+    }
+
+    @media print {
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .print-container {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        img {
+            max-width: 80mm;
+        }
+
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+    }
+</style>

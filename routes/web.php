@@ -1,26 +1,16 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
+Route::get('/test-file', function () {
+    $path = storage_path('app/templates/centres_model.xlsm');
 
-Route::get('/', function () {
-    return Inertia::render('PrimevueDashboard');
+    return response()->json([
+        'exists' => file_exists($path),
+        'path' => $path,
+    ]);
 });
 
-Route::get('/table', function () {
-    return Inertia::render('PrimevueTable');
-});
-
-Route::get('/media', function () {
-    return Inertia::render('PrimevueMedia');
-});
-
-Route::get('/chart', function () {
-    return Inertia::render('PrimevueChart');
-});
-
-
-
-require __DIR__.'/auth.php';
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '.*');

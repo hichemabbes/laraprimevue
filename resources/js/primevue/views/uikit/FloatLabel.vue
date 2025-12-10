@@ -8,7 +8,7 @@ const cities = ref([
     { name: 'Rome', code: 'RM' },
     { name: 'London', code: 'LDN' },
     { name: 'Istanbul', code: 'IST' },
-    { name: 'Paris', code: 'PRS' }
+    { name: 'Paris', code: 'PRS' },
 ]);
 const filteredCountries = ref(null);
 const value1 = ref(null);
@@ -53,7 +53,13 @@ const searchCountry = (event) => {
             </div>
             <div class="field col-12 md:col-4">
                 <span class="p-float-label">
-                    <AutoComplete id="autocomplete" v-model="value2" :suggestions="filteredCountries" @complete="searchCountry($event)" field="name"></AutoComplete>
+                    <AutoComplete
+                        id="autocomplete"
+                        v-model="value2"
+                        :suggestions="filteredCountries"
+                        @complete="searchCountry($event)"
+                        field="name"
+                    ></AutoComplete>
                     <label for="autocomplete">AutoComplete</label>
                 </span>
             </div>
@@ -71,13 +77,20 @@ const searchCountry = (event) => {
             </div>
             <div class="field col-12 md:col-4">
                 <span class="p-float-label">
-                    <InputMask id="inputmask" mask="99/99/9999" v-model="value5"></InputMask>
+                    <InputMask
+                        id="inputmask"
+                        mask="99/99/9999"
+                        v-model="value5"
+                    ></InputMask>
                     <label for="inputmask">InputMask</label>
                 </span>
             </div>
             <div class="field col-12 md:col-4">
                 <span class="p-float-label">
-                    <InputNumber id="inputnumber" v-model="value6"></InputNumber>
+                    <InputNumber
+                        id="inputnumber"
+                        v-model="value6"
+                    ></InputNumber>
                     <label for="inputnumber">InputNumber</label>
                 </span>
             </div>
@@ -87,26 +100,46 @@ const searchCountry = (event) => {
                         <i class="pi pi-user"></i>
                     </span>
                     <span class="p-float-label">
-                        <InputText type="text" id="inputgroup" v-model="value7" />
+                        <InputText
+                            type="text"
+                            id="inputgroup"
+                            v-model="value7"
+                        />
                         <label for="inputgroup">InputGroup</label>
                     </span>
                 </div>
             </div>
             <div class="field col-12 md:col-4">
                 <span class="p-float-label">
-                    <Dropdown id="dropdown" :options="cities" v-model="value8" optionLabel="name"></Dropdown>
+                    <Dropdown
+                        id="dropdown"
+                        :options="cities"
+                        v-model="value8"
+                        optionLabel="name"
+                    ></Dropdown>
                     <label for="dropdown">Dropdown</label>
                 </span>
             </div>
             <div class="field col-12 md:col-4">
                 <span class="p-float-label">
-                    <MultiSelect id="multiselect" :options="cities" v-model="value9" optionLabel="name" :filter="false"></MultiSelect>
+                    <MultiSelect
+                        id="multiselect"
+                        :options="cities"
+                        v-model="value9"
+                        optionLabel="name"
+                        :filter="false"
+                    ></MultiSelect>
                     <label for="multiselect">MultiSelect</label>
                 </span>
             </div>
             <div class="field col-12 md:col-4">
                 <span class="p-float-label">
-                    <Textarea inputId="textarea" rows="3" cols="30" v-model="value10"></Textarea>
+                    <Textarea
+                        inputId="textarea"
+                        rows="3"
+                        cols="30"
+                        v-model="value10"
+                    ></Textarea>
                     <label for="textarea">Textarea</label>
                 </span>
             </div>
